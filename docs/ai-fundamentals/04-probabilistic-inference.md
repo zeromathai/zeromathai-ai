@@ -1,4 +1,4 @@
-# Probabilistic Inference
+# 04. Probabilistic Inference
 
 A structured introduction to probabilistic reasoning in AI, covering uncertainty, Bayes' Theorem, probabilistic graphical models, Bayesian networks, and probabilistic inference under incomplete information.
 
