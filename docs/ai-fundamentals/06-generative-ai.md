@@ -1,4 +1,4 @@
-# Generative AI
+# 06. Generative AI
 
 A structured introduction to deep learning and generative AI systems, covering deep neural architectures, training breakthroughs, generative models, latent spaces, large language models, and multimodal AI.
 
