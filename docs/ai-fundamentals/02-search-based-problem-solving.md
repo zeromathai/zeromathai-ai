@@ -1,4 +1,4 @@
-# Search-Based Problem Solving
+# 02. Search-Based Problem Solving
 
 A structured introduction to search-based problem solving, covering state spaces, search trees, heuristics, optimal search, local search, adversarial search, and search in complex environments.
 
