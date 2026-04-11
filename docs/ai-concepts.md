@@ -1,101 +1,199 @@
 # AI Concepts & Structure
 
-A beginner-friendly guide to understanding how core AI concepts connect into one unified framework.
+A structured introduction to Artificial Intelligence, organizing definitions, conceptual frameworks, and the intelligent-agent perspective into one coherent view.
 
 ---
 
-## 🌍 Full Article (Multi-language)
+## 📖 Full Article
 
-👉 English  
+- English  
 https://zeromathai.com/en/ai-concepts-and-structure-en/
 
-👉 Español  
-https://zeromathai.com/es/ai-concepts-and-structure-es/
+- Korean  
+https://zeromathai.com/ai-concepts-and-structure/
 
-👉 Português  
-https://zeromathai.com/pt/ai-concepts-and-structure-pt/
-
-👉 中文  
-https://zeromathai.com/zh/ai-concepts-and-structure-zh/
-
----
-
-## 📖 DEV Version
-
-https://dev.to/zeromathai/what-is-ai-a-simple-guide-to-concepts-structure-and-intelligent-agents-1000
+👉 Other languages are available on the website
 
 ---
 
 ## 🧠 Overview
 
-Artificial Intelligence can be understood as systems that:
+Artificial Intelligence (AI) can be understood as systems that:
 
 - perceive their environment  
 - learn from data  
-- take actions to achieve goals  
+- make decisions and take actions to achieve goals  
 
-This guide explains how different AI concepts fit together into one structured framework.
-
----
-
-## 📚 Contents
-
-### 1. Understanding AI Concepts
-
-#### 1.1 History of Artificial Intelligence
-- Primitive Period  
-- First Industrial Phase  
-- Scientific Method  
-
-#### 1.2 Paradigms of AI
-
-#### 1.3 Applications of AI
-
-#### 1.4 Philosophy and Future of AI
+However, “intelligence” can be interpreted in different ways.  
+This section organizes those perspectives into one unified structure so that major AI ideas can be understood as part of a single framework.
 
 ---
 
-### 2. Search-Based Problem Solving
+## 📚 What This Section Covers
+
+This lecture connects the following core topics:
+
+- AI definitions and four interpretive views  
+- Structural understanding of AI systems  
+- Intelligent-agent framework  
+- PEAS model and task environments  
+- Agent architectures and learning systems  
 
 ---
 
-### 3. Logical Reasoning Systems
+## 🔍 AI Definitions and Four Perspectives
+
+AI has traditionally been described along two axes:
+
+- **Thinking vs Acting**
+- **Humanly vs Rationally**
+
+This leads to four classic views:
+
+- **Thinking Humanly**  
+  Modeling how humans think using cognitive science and psychology  
+
+- **Acting Humanly**  
+  Focusing on behavior indistinguishable from humans (e.g., the Turing Test)  
+
+- **Thinking Rationally**  
+  Emphasizing logical reasoning and formal correctness  
+
+- **Acting Rationally**  
+  Choosing actions that best achieve goals under given constraints  
+
+👉 In modern AI, the **rational agent perspective** has become the dominant framework.
 
 ---
 
-### 4. Probabilistic Reasoning
+## 🏗 High-Level Structure of AI
+
+AI systems can be understood from three complementary perspectives:
+
+### 1. Functional perspective (what it does)
+- perception  
+- reasoning  
+- learning  
+- planning  
+- control  
+
+### 2. Process perspective (how it works)
+- rule-based systems  
+- knowledge-based systems  
+- probabilistic models  
+- neural networks  
+- reinforcement learning  
+
+### 3. Modality perspective (data type)
+- text (NLP)  
+- speech  
+- images (vision)  
+- multimodal data  
+
+👉 These perspectives help unify different AI approaches into one conceptual map.
 
 ---
 
-### 5. Neural Network Learning Systems
+## 🤖 Intelligent Agent Perspective
+
+An **agent** is a system that:
+
+- receives input from the environment (percepts)  
+- takes actions that affect that environment  
+
+Key components:
+
+- **Sensors** → observe the environment  
+- **Actuators** → act on the environment  
+
+An **intelligent agent** selects actions that maximize performance according to a defined objective.
+
+👉 This framework connects:
+- search  
+- reasoning  
+- learning  
+- reinforcement learning  
 
 ---
 
-### 6. Deep Learning & Generative Models
+## ⚙️ PEAS Framework
+
+The PEAS framework defines an agent’s task:
+
+- **Performance** — how success is measured  
+- **Environment** — where the agent operates  
+- **Actuators** — how it acts  
+- **Sensors** — how it perceives  
 
 ---
 
-### 7. Embodied AI Systems
+### Task Environment Properties
+
+When designing AI systems, environments are analyzed as:
+
+- fully vs partially observable  
+- deterministic vs stochastic  
+- static vs dynamic  
+- single-agent vs multi-agent  
 
 ---
 
-## 🔗 Related Topics (Coming Soon)
+## 🧩 Agent Architectures
 
-- GRU (Gated Recurrent Unit)
-- Hidden Markov Model (HMM)
-- Kalman Filter
-- Transformer
+Different agent designs reflect increasing complexity:
+
+- **Simple Reflex Agents**  
+  React directly to current input  
+
+- **Model-Based Agents**  
+  Maintain internal state  
+
+- **Goal-Based Agents**  
+  Act toward specific goals  
+
+- **Utility-Based Agents**  
+  Optimize expected outcomes  
+
+- **Learning Agents**  
+  Improve performance through experience  
+
+👉 These structures form the foundation of modern AI systems.
+
+---
+
+## 📚 Related Advanced Topics
+
+This section connects to deeper topics:
+
+- History of Artificial Intelligence  
+- AI Paradigms  
+- AI Applications  
+- Philosophy and Future of AI  
+- Search-Based Problem Solving  
+- Probabilistic Reasoning  
+- Neural Networks and Deep Learning  
+- Generative AI and Embodied AI  
 
 ---
 
 ## 💡 Why This Matters
 
-AI often feels fragmented — many terms but no clear structure.
+AI often feels fragmented — many terms without clear connections.
 
-This guide organizes them into one unified view so you can understand how everything connects.
+This framework helps you:
+
+- understand how concepts relate  
+- see the big picture of AI  
+- build a solid foundation for advanced topics  
 
 ---
 
-## ⭐ Support
+## ⭐ Note
 
-If this helped you, consider giving a ⭐ to the repository!
+This material is organized and reconstructed based on lectures by **Professor Byoung-Tak Zhang (Seoul National University)**.
+
+---
+
+## 🚀 Next Steps
+
+Future documents in this repository will expand each topic into detailed lectures and implementations.
