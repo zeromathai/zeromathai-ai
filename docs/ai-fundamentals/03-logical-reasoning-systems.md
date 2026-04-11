@@ -153,15 +153,11 @@ Inference rules define how knowledge is extended safely.
 
 ### Modus Ponens
 
-\[
-(A \rightarrow B), A \Rightarrow B
-\]
+(A → B), A ⇒ B
 
 ### And-Elimination
 
-\[
-A \land B \Rightarrow A, B
-\]
+A ∧ B ⇒ A, B
 
 ### Resolution
 
