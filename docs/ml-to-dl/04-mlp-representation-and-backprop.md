@@ -92,7 +92,7 @@ In classification, outputs are interpreted as probabilities.
 
 The most common function is **softmax**:
 
-P(y=i \mid x) = e^{z_i} / \sum_j e^{z_j}
+P(y=i | x) = exp(z_i) / Σ_j exp(z_j)
 
 👉 What softmax does:
 
