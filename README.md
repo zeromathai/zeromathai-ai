@@ -8,7 +8,7 @@ A structured, end-to-end AI learning roadmap from fundamentals to advanced syste
 
 ## 🧠 AI Concepts
 - [AI Concepts](docs/ai-concepts.md)
-- [Problem Solving](https://zeromathai.com/en/ai-search-based-problem-solving-en/)
+- [Problem Solving](docs/search-based-problem-solving.md)
 - Logical Inference
 - Probabilistic Inference
 - Neural Networks
