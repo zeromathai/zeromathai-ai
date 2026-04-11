@@ -1,4 +1,4 @@
-# Neural Networks
+# 05. Neural Networks
 
 A structured introduction to neural network learning systems and deep learning, covering brain-inspired learning, early neural models, backpropagation-based learning, deep representation learning, and the expansion toward generative and multimodal AI.
 
