@@ -163,16 +163,13 @@ Different agent designs reflect increasing complexity:
 
 ## 📚 Related Advanced Topics
 
-This section connects to deeper topics:
-
-- History of Artificial Intelligence  
-- AI Paradigms  
-- AI Applications  
-- Philosophy and Future of AI  
-- Search-Based Problem Solving  
-- Probabilistic Reasoning  
-- Neural Networks and Deep Learning  
-- Generative AI and Embodied AI  
+- [History of Artificial Intelligence](https://zeromathai.com/en/history-of-ai-en/)
+- [AI Early Period (1950–1970)](https://zeromathai.com/en/ai-early-period-en/)
+- [AI First Industrialization (1970–1990)](https://zeromathai.com/en/ai-first-industrialization-en/)
+- [AI Scientific Methodology (1990–2010)](https://zeromathai.com/en/ai-scientific-methodology-en/)
+- [Artificial Intelligence Paradigms](https://zeromathai.com/en/artificial-intelligence-paradigm-en/)
+- [Applications of Artificial Intelligence](https://zeromathai.com/en/artificial-intelligence-applications-en/)
+- [Philosophy and Future of AI](https://zeromathai.com/en/thinking-machine-en/)
 
 ---
 
