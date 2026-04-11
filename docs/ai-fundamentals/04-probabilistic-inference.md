@@ -115,17 +115,13 @@ The probability of one event regardless of the values of other variables.
 
 ### Conditional probability
 
-\[
-P(A \mid B)=\frac{P(A \cap B)}{P(B)}
-\]
+P(A|B) = P(A ∩ B) / P(B)
 
 This tells us how belief in **A** changes once **B** is known.
 
 ### Bayes' Theorem
 
-\[
-P(H \mid E)=\frac{P(E \mid H)P(H)}{P(E)}
-\]
+P(H|E) = (P(E|H) * P(H)) / P(E)
 
 Where:
 
