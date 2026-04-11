@@ -112,7 +112,7 @@ Backpropagation computes how each parameter affects the loss.
 
 Core idea:
 
-∂L/∂W^(l) = (∂L/∂h^(l)) * (∂h^(l)/∂W^(l))
+dL/dW^(l) = (dL/dh^(l)) * (dh^(l)/dW^(l))
 
 👉 Meaning:
 
