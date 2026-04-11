@@ -5,8 +5,17 @@
 This lecture introduces **Traditional Machine Learning** as a framework for learning patterns from data and generalizing them to new inputs.  
 Instead of manually designing rules, models are trained to capture statistical relationships and make predictions or decisions based on data.
 
-👉 Full lecture:  
-https://zeromathai.com/en/dl-traditional-ml-overview-en/
+---
+
+## 📖 Full Article
+
+- English  
+  https://zeromathai.com/en/dl-traditional-ml-overview-en/
+
+- Korean  
+  https://zeromathai.com/dl-traditional-ml-overview/
+
+👉 Other languages are available on the website
 
 ---
 
