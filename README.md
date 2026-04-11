@@ -18,11 +18,11 @@ A structured, end-to-end AI learning roadmap from fundamentals to advanced syste
 ---
 
 ## 📈 ML to DNN
-- [Traditional Machine Learning](docs/ml-to-dl/traditional-ml-overview.md)
-- [Foundations of AI and Deep Learning](docs/ml-to-dl/foundations-of-ai.md)
-- [Optimization](docs/ml-to-dl/optimization-regularization-integrated-lecture.md)
-- [MLP](docs/ml-to-dl/mlp-representation-and-backprop.md)
-- [CNNs](docs/ml-to-dl/convolutional-neural-networks-cnn.md)
+- [Traditional Machine Learning](docs/ml-to-dl/01-traditional-ml-overview.md)
+- [Foundations of AI and Deep Learning](docs/ml-to-dl/02-foundations-of-ai.md)
+- [Optimization](docs/ml-to-dl/03-optimization-regularization-integrated-lecture.md)
+- [MLP](docs/ml-to-dl/04-mlp-representation-and-backprop.md)
+- [CNNs](docs/ml-to-dl/05-convolutional-neural-networks-cnn.md)
 - RNNs
 - Transformer
 - Generative Models
