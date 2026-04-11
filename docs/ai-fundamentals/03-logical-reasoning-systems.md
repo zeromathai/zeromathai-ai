@@ -102,9 +102,7 @@ First-order logic extends propositional logic by representing:
 
 ### Example
 
-\[
-\forall x \, (Student(x) \rightarrow Human(x))
-\]
+∀x (Student(x) -> Human(x))
 
 👉 FOL allows AI to describe real-world relationships precisely.
 
