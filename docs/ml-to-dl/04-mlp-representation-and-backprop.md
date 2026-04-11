@@ -52,9 +52,7 @@ Each layer performs:
 
 The core computation is:
 
-\[
-h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)})
-\]
+h^(l) = σ(W^(l) h^(l-1) + b^(l))
 
 👉 Meaning:
 
