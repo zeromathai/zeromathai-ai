@@ -1,4 +1,4 @@
-# Embodied AI
+# 07. Embodied AI
 
 A structured introduction to embodied AI systems, focusing on how intelligence emerges through perception, action, learning, and interaction with the environment.
 
