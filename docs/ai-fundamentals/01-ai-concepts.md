@@ -1,4 +1,4 @@
-# AI Concepts & Structure
+# 01. AI Concepts & Structure
 
 A structured introduction to Artificial Intelligence, organizing definitions, conceptual frameworks, and the intelligent-agent perspective into one coherent view.
 
