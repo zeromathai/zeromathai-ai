@@ -7,9 +7,9 @@ A structured, end-to-end AI learning roadmap from fundamentals to advanced syste
 # 🟢 BASIC LEARNING
 
 ## 🧠 AI Concepts
-- [AI Concepts](docs/ai-concepts.md)
-- [Problem Solving](docs/search-based-problem-solving.md)
-- Logical Inference
+- [AI Concepts](docs/ai-fundamentals/ai-concepts.md)
+- [Problem Solving](docs/ai-fundamentals/search-based-problem-solving.md)
+- [Logical Inference](docs/ai-fundamentals/logical-reasoning-systems.md)
 - Probabilistic Inference
 - Neural Networks
 - Generative AI
