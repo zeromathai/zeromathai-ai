@@ -112,11 +112,7 @@ Backpropagation computes how each parameter affects the loss.
 
 Core idea:
 
-\[
-\frac{\partial L}{\partial W^{(l)}} =
-\frac{\partial L}{\partial h^{(l)}} \cdot
-\frac{\partial h^{(l)}}{\partial W^{(l)}}
-\]
+∂L/∂W^(l) = (∂L/∂h^(l)) * (∂h^(l)/∂W^(l))
 
 👉 Meaning:
 
