@@ -1,4 +1,4 @@
-# Logical Reasoning Systems
+# 03. Logical Reasoning Systems
 
 A structured introduction to logical reasoning in AI, covering knowledge representation, propositional logic, first-order logic, inference rules, logic programming, and theorem proving.
 
