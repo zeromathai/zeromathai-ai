@@ -1,4 +1,4 @@
-# 13. Optimization Algorithms and Search Strategies — Gradient Descent and A* Explained
+# 08. Optimization Algorithms and Search Strategies — Gradient Descent and A* Explained
 
 A structured hub that connects optimization problems, search-based strategies, mathematical optimization, and global vs local solutions into one coherent framework.
 
