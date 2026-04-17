@@ -44,7 +44,7 @@ If you're new to AI, start with these core guides first:
 - [16. Deep Learning — Neural Networks, CNN, RNN, Transformers, and How They Learn](docs/hub/deep-learning-hub.md)
 - [17. CNN — Convolution, Pooling, and ResNet Explained](docs/hub/cnn-complete-hub.md)
 - [18. RNN — Sequence Learning with LSTM and GRU Explained](docs/hub/rnn-complete-hub.md)
-- [19. Deep Learning Architectures — CNN vs RNN vs Transformer (Complete Guide)](docs/hub/deep-learning-architectures-complete-guide.md)
+- [19. Deep Learning Architectures — CNN vs RNN vs Transformer (Complete Guide)](docs/hub/deep-learning-architectures-hub.md)
 - [20. Large Language Models (LLM) — Transformer, Encoder vs Decoder Explained](docs/hub/large-language-models-hub.md)
 - [21. Game Decision Making — Minimax Algorithm & Alpha-Beta Pruning Explained](docs/hub/game-decision-making-hub.md)
 
