@@ -302,4 +302,4 @@ This material is organized and reconstructed based on lectures by **Professor Su
 ## 🔗 Navigation
 
 ← Previous: [MLP](04-mlp-representation-and-backprop.md)  
-→ Next: [RNNs](06-rnn.md)
+→ Next: [RNNs](06-recurrent-reural-networks.md)
