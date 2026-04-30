@@ -8,40 +8,28 @@ It starts from one simple question:
 
 👉 How can a neural network understand data where order matters?
 
-RNNs were designed for data such as:
+RNNs are designed for data such as:
 
 - text  
 - speech  
 - time series  
 - music  
-- video frames  
+- video  
 
-In these data types, meaning does not come from one input alone.  
-It comes from how inputs are connected over time.
+In these data types, meaning comes from how inputs are connected over time.
 
 This lecture explains:
 
 - why sequential data needs a different modeling approach  
 - how RNNs use hidden states as memory  
-- how RNNs learn through Backpropagation Through Time  
-- how language modeling predicts the next token  
-- why vanilla RNNs struggle with long-term dependencies  
-- how LSTM, GRU, Seq2Seq, Attention, and Transformer extend the idea  
-- how this flow leads to modern AI models such as BERT, GPT, ViT, and multimodal models  
+- how RNNs learn through time (BPTT)  
+- how language modeling enables sequence generation  
+- why vanilla RNNs fail on long dependencies  
+- how LSTM, GRU, Seq2Seq extend RNN  
+- how Attention and Transformer replace recurrence  
+- how this leads to modern AI models  
 
-Together, these ideas show how RNNs became one of the key bridges from classical neural networks to modern foundation models.
-
----
-
-## 📖 Full Article
-
-- English  
-  https://zeromathai.com/en/rnn-overview/
-
-- Korean  
-  https://zeromathai.com/rnn-overview/
-
-👉 Other languages are available on the website
+Together, these ideas form the bridge from classical neural networks to modern foundation models.
 
 ---
 
@@ -52,7 +40,7 @@ Together, these ideas show how RNNs became one of the key bridges from classical
 - Vanilla RNN and learning through time  
 - RNN language modeling  
 - Sequential model evolution  
-- BiRNN, LSTM, GRU, and Seq2Seq  
+- BiRNN, LSTM, GRU, Seq2Seq  
 - Attention and Transformer  
 - Transformer-based modern AI  
 
@@ -60,22 +48,20 @@ Together, these ideas show how RNNs became one of the key bridges from classical
 
 ## 1. Why Sequence Modeling Matters
 
-Most basic neural networks assume that inputs can be processed independently.
+Most neural networks assume inputs are independent.
 
-But many real-world data types are not independent.
+But many real-world data types are not:
 
-Examples:
+- sentence meaning depends on word order  
+- speech depends on time flow  
+- stock prices depend on previous values  
+- video depends on frame sequence  
 
-- in a sentence, word order changes meaning  
-- in speech, sound patterns unfold over time  
-- in stock prices, previous values affect interpretation  
-- in video, motion appears across multiple frames  
+👉 This is **sequential data**
 
-This kind of data is called **sequential data**.
+Key idea:
 
-👉 Key idea:
-
-The meaning of the current input depends on what came before it.
+👉 The current input depends on previous inputs
 
 That is why sequence modeling is needed.
 
@@ -83,76 +69,266 @@ That is why sequence modeling is needed.
 
 ## 2. RNN Hidden State and Memory
 
-RNNs solve sequence modeling by introducing a simple but powerful idea:
+RNN introduces memory through the **hidden state**.
 
-👉 keep a state that summarizes the past
+At each step:
 
-This state is called the **hidden state**.
+- read input  
+- combine with previous state  
+- update state  
 
-At each time step, an RNN:
-
-- reads the current input  
-- combines it with the previous hidden state  
-- creates a new hidden state  
-
-So the model does not treat each input as isolated.
-
-It carries context forward through time.
+👉 Hidden state = compressed past information
 
 ### Intuition
 
-The hidden state is like a running memory.
+- sentence → accumulated meaning  
+- time series → pattern so far  
+- speech → acoustic context  
 
-For a sentence, it stores the meaning built so far.  
-For a time series, it stores the recent pattern.  
-For speech, it stores acoustic context.
+Limitation:
 
-However, this memory is compressed.
-
-So it is useful, but not perfect.
+- compressed → lossy  
+- long-term memory is weak  
 
 ---
 
 ## 3. Vanilla RNN and Learning Through Time
 
-The simplest RNN is often called:
+Vanilla RNN repeats the same update rule over time.
 
-- Vanilla RNN  
-- Simple RNN  
-- Elman RNN  
+This is called **recurrence**.
 
-It repeatedly applies the same update rule across time.
+Training uses:
 
-This repetition is called **recurrence**.
+👉 Backpropagation Through Time (BPTT)
 
-To train an RNN, the model is unfolded across time and trained with:
+Process:
 
-👉 **Backpropagation Through Time (BPTT)**
+- unfold sequence  
+- compute loss across time  
+- propagate gradients backward  
 
-BPTT allows the model to learn how earlier inputs affected later outputs.
+### Problem
 
-But this also creates a major challenge.
+Gradients can:
 
-When gradients travel through many time steps, they can become:
+- shrink → vanishing gradient  
+- explode → unstable learning  
 
-- too small → vanishing gradient  
-- too large → exploding gradient  
+👉 Result:
 
-This makes vanilla RNNs difficult to train on long sequences.
+RNN struggles with long-term dependencies.
 
 ---
 
 ## 4. RNN Language Modeling
 
-One of the most important applications of RNNs is **language modeling**.
+RNN is widely used for **language modeling**.
 
-The goal is simple:
+Goal:
 
-👉 predict the next token from previous tokens
+👉 predict next token from previous tokens
 
 Example:
 
-Input:
+The pen is → mightier
 
-```text
-The pen is
+### Autoregressive generation
+
+- predict next token  
+- feed it back  
+- repeat  
+
+Used in:
+
+- text generation  
+- early chat systems  
+- sequence generation  
+
+---
+
+## 5. Sequential Model Evolution
+
+Sequence modeling includes multiple approaches:
+
+- ARIMA (time series)  
+- HMM, Kalman Filter (probabilistic)  
+- 1-D CNN, TCN (convolutional)  
+- RNN family  
+- Attention models  
+- Transformer  
+
+All solve the same problem:
+
+👉 how to use past information
+
+Different answers:
+
+- RNN → hidden state  
+- Attention → direct access  
+- Transformer → full connectivity  
+
+---
+
+## 6. BiRNN, LSTM, GRU, Seq2Seq
+
+### Bidirectional RNN
+
+- forward + backward processing  
+- captures full context  
+
+### LSTM / GRU
+
+- use gates  
+- control memory flow  
+- solve long dependency problem  
+
+### Seq2Seq
+
+- sequence → sequence mapping  
+- encoder–decoder structure  
+
+Applications:
+
+- translation  
+- speech recognition  
+- summarization  
+
+---
+
+## 7. Attention and Transformer
+
+Problem in RNN:
+
+👉 compressing everything into one vector
+
+Solution:
+
+👉 Attention
+
+- directly access relevant inputs  
+
+### Self-attention
+
+- every token interacts with every other token  
+
+### Transformer
+
+- removes recurrence  
+- uses self-attention  
+
+Advantages:
+
+- parallel computation  
+- long-range dependency handling  
+- scalable architecture  
+
+---
+
+## 8. Transformer-Based Modern AI
+
+Transformer enables:
+
+- BERT (understanding)  
+- GPT (generation)  
+- Vision Transformer  
+- multimodal models  
+- text-to-image generation  
+- conversational AI  
+
+Key idea:
+
+👉 sequence modeling becomes universal
+
+Used across:
+
+- text  
+- image  
+- audio  
+- video  
+
+---
+
+## 🎯 Key Insight
+
+RNN introduced the core idea:
+
+👉 modeling data as a sequence with memory
+
+This connects:
+
+- hidden state  
+- sequence modeling  
+- language modeling  
+- Seq2Seq  
+- Attention  
+- Transformer  
+- modern AI  
+
+Even though Transformers dominate today:
+
+👉 RNN is the conceptual starting point
+
+---
+
+## 📚 Related Advanced Topics
+
+- Sequential Data and RNN Basics  
+- RNN Hidden State and Dynamics  
+- Vanilla RNN and BPTT  
+- RNN Language Modeling  
+- Sequential Model Evolution  
+- BiRNN, LSTM, GRU, Seq2Seq  
+- Attention and Transformer  
+- Post-Transformer Modern AI  
+
+---
+
+## 🔧 6.1~6.8 Refactoring Guide
+
+### 6.1 RNN and Sequential Data
+- 역할: 왜 RNN이 필요한가  
+- 핵심: Sequential Data, Variable Length, Mapping, 응용  
+- 제거: hidden state 수식, BPTT, transformer 설명  
+
+### 6.2 RNN Hidden State and Dynamics
+- 역할: 상태 기반 구조 이해  
+- 핵심: Hidden State, Recurrence, Dynamical System, Lossy Summary  
+- 제거: language modeling, transformer  
+
+### 6.3 Vanilla RNN and BPTT
+- 역할: 실제 계산과 학습  
+- 핵심: forward, loss, BPTT, gradient 문제  
+- 제거: sequence 개론  
+
+### 6.4 RNN Language Modeling
+- 역할: 생성 문제 이해  
+- 핵심: chain rule, next-token, teacher forcing  
+- 제거: RNN 일반 설명  
+
+### 6.5 Sequential Models Overview
+- 역할: 전체 모델 계보  
+- 핵심: ARIMA → Transformer 흐름  
+- 제거: 세부 수식  
+
+### 6.6 BiRNN, LSTM, GRU, Seq2Seq
+- 역할: RNN 확장 구조  
+- 핵심: memory, bidirectionality, encoder-decoder  
+- 제거: attention 상세  
+
+### 6.7 Attention and Transformer
+- 역할: 병목 해결  
+- 핵심: attention, self-attention, parallelization  
+- 제거: GPT/BERT 상세  
+
+### 6.8 Post-Transformer Modern AI
+- 역할: 최신 AI 연결  
+- 핵심: foundation model, GPT, BERT, multimodal  
+- 제거: attention 반복 설명  
+
+---
+
+## 🔗 Navigation
+
+← Previous: CNNs  
+→ Next: Transformers
