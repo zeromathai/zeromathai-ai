@@ -103,7 +103,7 @@ These are the core concept hubs that organize the entire AI field:
 - [Optimization](docs/ml-to-dl/03-optimization-regularization-integrated-lecture.md)
 - [MLP](docs/ml-to-dl/04-mlp-representation-and-backprop.md)
 - [CNNs](docs/ml-to-dl/05-convolutional-neural-networks-cnn.md)
-- [RNNs](06-recurrent-reural-networks.md)
+- [RNNs](docs/ml-to-dl/06-recurrent-reural-networks.md)
 - Transformer (Coming Soon)
 - Generative Models (Coming Soon)
 - VAE (Coming Soon)
