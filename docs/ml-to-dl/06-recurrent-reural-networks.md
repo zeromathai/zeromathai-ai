@@ -279,5 +279,5 @@ This material is organized and reconstructed based on lectures by **Professor Su
 
 ## 🔗 Navigation
 
-← Previous: [CNNs](05-cnn.md)  
-→ Next: [Transformers](07-transformer.md)
+← Previous: [CNNs](docs/ml-to-dl/05-convolutional-neural-networks-cnn.md)
+→ Next: [Transformers](docs/ml-to-dl/07-transformer.md)
