@@ -25,7 +25,7 @@ Together, these ideas show how RNNs became the foundation of modern sequence-bas
 ## 📖 Full Article
 
 - English  
-  https://zeromathai.com/en/rnn-overview/
+  https://zeromathai.com/en/rnn-overview-en/
 
 - Korean  
   https://zeromathai.com/rnn-overview/
@@ -260,14 +260,14 @@ Even though modern AI is dominated by Transformers, the core idea of sequence mo
 
 ## 📚 Related Advanced Topics
 
-- [Sequential Data and RNN Basics](https://zeromathai.com/en/rnn-and-sequential-data-overview/)
-- [RNN Hidden State and Dynamics](https://zeromathai.com/en/rnn-dynamical-systems-hidden-state/)
-- [Vanilla RNN and BPTT](https://zeromathai.com/en/vanilla-rnn-architecture-and-training/)
-- [RNN Language Modeling](https://zeromathai.com/en/rnn-language-modeling/)
-- [Sequential Model Evolution](https://zeromathai.com/en/sequential-models-overview/)
-- [BiRNN, LSTM, GRU, and Seq2Seq](https://zeromathai.com/en/birnn-lstm-seq2seq/)
-- [Attention and Transformer Architecture](https://zeromathai.com/en/attention-transformer-architecture/)
-- [Post-Transformer Modern AI](https://zeromathai.com/en/post-transformer-modern-ai/)
+- [Sequential Data and RNN Basics](https://zeromathai.com/en/rnn-and-sequential-data-overview-en/)
+- [RNN Hidden State and Dynamics](https://zeromathai.com/en/rnn-dynamical-systems-hidden-state-en/)
+- [Vanilla RNN and BPTT](https://zeromathai.com/en/vanilla-rnn-architecture-and-training-en/)
+- [RNN Language Modeling](https://zeromathai.com/en/rnn-language-modeling-en/)
+- [Sequential Model Evolution](https://zeromathai.com/en/sequential-models-overview-en/)
+- [BiRNN, LSTM, GRU, and Seq2Seq](https://zeromathai.com/en/birnn-lstm-seq2seq-en/)
+- [Attention and Transformer Architecture](https://zeromathai.com/en/attention-transformer-architecture-en/)
+- [Post-Transformer Modern AI](https://zeromathai.com/en/post-transformer-modern-ai-en/)
 
 ---
 
