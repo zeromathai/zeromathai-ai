@@ -19,19 +19,20 @@ A GAN approaches this problem through adversarial learning. Instead of explicitl
 
 ## 📚 Table of Contents
 
-1. Discriminative and Generative Models
-2. Generative Modeling
-3. Forward and Inverse Problems
-4. Posterior Inference
-5. Approximate Inference
-6. Data Distribution Modeling
-7. Normalizing Constants
-8. Deep Generative Models
-9. Diffusion Models
-10. GANs as Adversarial Generative Models
+1. [Discriminative and Generative Models](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-1)
+2. [Generative Modeling](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-2)
+3. [Forward and Inverse Problems](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-3)
+4. [Posterior Inference](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-4)
+5. [Approximate Inference](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-5)
+6. [Data Distribution Modeling](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-6)
+7. [Normalizing Constants](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-7)
+8. [Deep Generative Models](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-8)
+9. [Diffusion Models](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-9)
+10. [GANs as Adversarial Generative Models](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/08-gan.md#section-10)
 
 ---
 
+<a id="section-1"></a>
 ## Discriminative and Generative Models
 
 A discriminative model focuses on the relationship between an observation and a target. Given an input $x$, it learns how to predict a corresponding label or output $y$.
@@ -42,21 +43,26 @@ This distinction becomes especially important when the objective is not merely t
 
 ---
 
+<a id="section-2"></a>
 ## Generative Modeling
 
 Suppose observed samples come from an unknown data distribution $p_{\text{data}}(x)$. A generative model attempts to learn a model distribution $p_{\theta}(x)$ that approximates it.
 
 The central objective can be expressed conceptually as
 
-$$
+
+```math
 p_{\theta}(x) \approx p_{\text{data}}(x).
-$$
+```
+
 
 Once the model captures this distribution sufficiently well, new samples can be generated from the learned model:
 
-$$
+
+```math
 x \sim p_{\theta}(x).
-$$
+```
+
 
 The difficulty is that real-world data distributions are usually high-dimensional and structurally complex. Images, for example, are not arbitrary collections of pixel values. Their probability mass is concentrated around structured configurations corresponding to meaningful objects, textures, shapes, and scenes.
 
@@ -64,51 +70,63 @@ Generative modeling therefore requires a model flexible enough to represent comp
 
 ---
 
+<a id="section-3"></a>
 ## Forward and Inverse Problems
 
 Many generative models can be understood through the relationship between latent variables and observations.
 
 Let $z$ represent a latent variable and $x$ an observed variable. A forward generative process describes how an observation may be produced from a latent state:
 
-$$
+
+```math
 z \rightarrow x.
-$$
+```
+
 
 If the model specifies a conditional distribution $p(x\mid z)$ together with a prior distribution $p(z)$, the joint distribution can be written as
 
-$$
+
+```math
 p(x,z)=p(x\mid z)p(z).
-$$
+```
+
 
 The inverse problem goes in the opposite direction. Given an observation $x$, we want to infer which latent states $z$ could have produced it.
 
 This requires the posterior distribution
 
-$$
+
+```math
 p(z\mid x).
-$$
+```
+
 
 The forward process may be easy to describe while the corresponding inverse problem is difficult. This asymmetry is one of the central reasons inference becomes an important issue in probabilistic generative modeling.
 
 ---
 
+<a id="section-4"></a>
 ## Posterior Inference
 
 Bayes' rule gives the posterior distribution as
 
-$$
+
+```math
 p(z\mid x)
 =
 \frac{p(x\mid z)p(z)}{p(x)}.
-$$
+```
+
 
 The denominator is the marginal probability of the observation:
 
-$$
+
+```math
 p(x)
 =
 \int p(x\mid z)p(z)\,dz.
-$$
+```
+
 
 This term ensures that the posterior is properly normalized.
 
@@ -118,6 +136,7 @@ As a result, exact posterior inference is often computationally intractable even
 
 ---
 
+<a id="section-5"></a>
 ## Approximate Inference
 
 When the exact posterior $p(z\mid x)$ cannot be computed efficiently, approximate inference methods attempt to obtain useful information without evaluating it exactly.
@@ -128,18 +147,21 @@ Another approach is Variational Inference (VI). Instead of sampling directly fro
 
 The optimization can be written as
 
-$$
-q^\*(z)
+
+```math
+q^{*}(z)
 =
 \underset{q(z)\in\mathcal{Q}}{\arg\min}
 D_{\mathrm{KL}}\!\left(
 q(z)\,\|\,p(z\mid x)
 \right).
-$$
+```
+
 
 The KL Divergence is
 
-$$
+
+```math
 D_{\mathrm{KL}}\!\left(
 q(z)\,\|\,p(z\mid x)
 \right)
@@ -149,12 +171,14 @@ q(z)\,\|\,p(z\mid x)
 \log
 \frac{q(z)}{p(z\mid x)}
 \right].
-$$
+```
+
 
 The key idea is that an intractable inference problem is converted into an optimization problem over a tractable family of distributions.
 
 ---
 
+<a id="section-6"></a>
 ## Data Distribution Modeling
 
 Generative models ultimately differ in how they represent and learn the data distribution.
@@ -165,25 +189,30 @@ This creates an important design question: how expressive can the model become w
 
 ---
 
+<a id="section-7"></a>
 ## Normalizing Constants
 
 A valid probability distribution must be normalized.
 
 For a model defined through an unnormalized function $\tilde{p}_{\theta}(x)$, the normalized probability can be written as
 
-$$
+
+```math
 p_{\theta}(x)
 =
 \frac{\tilde{p}_{\theta}(x)}{Z_{\theta}},
-$$
+```
+
 
 where the normalizing constant is
 
-$$
+
+```math
 Z_{\theta}
 =
 \int \tilde{p}_{\theta}(x)\,dx.
-$$
+```
+
 
 The model may be highly flexible, but computing $Z_{\theta}$ can become difficult or impossible in practice.
 
@@ -191,6 +220,7 @@ This illustrates a recurring tradeoff in probabilistic modeling. Greater represe
 
 ---
 
+<a id="section-8"></a>
 ## Deep Generative Models
 
 Deep generative models use neural networks to represent complex data distributions or transformations associated with them.
@@ -207,13 +237,15 @@ These approaches share the objective of learning complex data distributions, but
 
 ---
 
+<a id="section-9"></a>
 ## Diffusion Models
 
 A Diffusion Model defines a forward process that gradually adds noise to data.
 
 A typical forward transition can be represented as
 
-$$
+
+```math
 q(x_t\mid x_{t-1})
 =
 \mathcal{N}
@@ -222,15 +254,18 @@ x_t;
 \sqrt{1-\beta_t}\,x_{t-1},
 \beta_t I
 \right).
-$$
+```
+
 
 After sufficiently many steps, the original structure of the data is largely destroyed and the state approaches a simple noise distribution.
 
 Generation requires reversing this process. A learned reverse model approximates transitions of the form
 
-$$
+
+```math
 p_{\theta}(x_{t-1}\mid x_t).
-$$
+```
+
 
 Starting from noise, repeated reverse transitions gradually reconstruct a structured sample.
 
@@ -238,23 +273,27 @@ This provides a useful contrast with GANs. A GAN attempts to transform latent no
 
 ---
 
+<a id="section-10"></a>
 ## GANs as Adversarial Generative Models
 
 A GAN contains two competing neural networks.
 
 The **Generator** $G$ receives a latent variable $z$ sampled from a prior distribution and produces a generated sample:
 
-$$
+
+```math
 z \sim p_z(z),
 \qquad
 x_{\text{fake}} = G(z).
-$$
+```
+
 
 The **Discriminator** $D$ receives either real or generated data and attempts to determine whether the input came from the real data distribution.
 
 The original adversarial objective is
 
-$$
+
+```math
 \min_G \max_D V(D,G)
 =
 \mathbb{E}_{x\sim p_{\text{data}}(x)}
@@ -266,15 +305,18 @@ $$
 \left[
 \log\left(1-D(G(z))\right)
 \right].
-$$
+```
+
 
 The discriminator improves by assigning high values to real samples and low values to generated samples. The generator improves by producing samples that make this discrimination increasingly difficult.
 
 The resulting training process can be viewed as a two-player game. Ideally, the generator distribution approaches the data distribution:
 
-$$
+
+```math
 p_g(x)=p_{\text{data}}(x).
-$$
+```
+
 
 At this point, the discriminator can no longer reliably distinguish generated samples from real ones.
 
