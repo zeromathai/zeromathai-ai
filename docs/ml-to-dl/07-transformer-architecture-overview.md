@@ -23,25 +23,26 @@ This chapter develops those ideas as one continuous progression: from the limita
 
 ## 📚 Table of Contents
 
-* [1. Why Transformers Replaced Sequential Processing](#1-why-transformers-replaced-sequential-processing)
-* [2. From Sequence-to-Sequence Models to the Transformer](#2-from-sequence-to-sequence-models-to-the-transformer)
-* [3. Language Modeling and the Need for Attention](#3-language-modeling-and-the-need-for-attention)
-* [4. Query, Key, and Value](#4-query-key-and-value)
-* [5. Self-Attention as Matrix Computation](#5-self-attention-as-matrix-computation)
-* [6. Multi-Head Attention and Representation Subspaces](#6-multi-head-attention-and-representation-subspaces)
-* [7. Positional Information: Sinusoidal Encoding, APE, RPE, and RoPE](#7-positional-information-sinusoidal-encoding-ape-rpe-and-rope)
-* [8. Residual Connections, LayerNorm, and Transformer Blocks](#8-residual-connections-layernorm-and-transformer-blocks)
-* [9. Transformer Decoder and Autoregressive Generation](#9-transformer-decoder-and-autoregressive-generation)
-* [10. LM Head, Temperature, and Decoding Strategies](#10-lm-head-temperature-and-decoding-strategies)
-* [11. The Long-Context Attention Bottleneck](#11-the-long-context-attention-bottleneck)
-* [12. Local, Sparse, and FlashAttention](#12-local-sparse-and-flashattention)
-* [13. KV Cache and Autoregressive Inference](#13-kv-cache-and-autoregressive-inference)
-* [14. MQA, GQA, and MLA](#14-mqa-gqa-and-mla)
-* [15. Modern Transformer Blocks in LLMs](#15-modern-transformer-blocks-in-llms)
-* [16. RMSNorm, SwiGLU, Mixture of Experts, and Multi-Token Prediction](#16-rmsnorm-swiglu-mixture-of-experts-and-multi-token-prediction)
+1. [Why Transformers Replaced Sequential Processing](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-1)
+2. [From Sequence-to-Sequence Models to the Transformer](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-2)
+3. [Language Modeling and the Need for Attention](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-3)
+4. [Query, Key, and Value](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-4)
+5. [Self-Attention as Matrix Computation](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-5)
+6. [Multi-Head Attention and Representation Subspaces](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-6)
+7. [Positional Information: Sinusoidal Encoding, APE, RPE, and RoPE](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-7)
+8. [Residual Connections, LayerNorm, and Transformer Blocks](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-8)
+9. [Transformer Decoder and Autoregressive Generation](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-9)
+10. [LM Head, Temperature, and Decoding Strategies](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-10)
+11. [The Long-Context Attention Bottleneck](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-11)
+12. [Local, Sparse, and FlashAttention](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-12)
+13. [KV Cache and Autoregressive Inference](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-13)
+14. [MQA, GQA, and MLA](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-14)
+15. [Modern Transformer Blocks in LLMs](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-15)
+16. [RMSNorm, SwiGLU, Mixture of Experts, and Multi-Token Prediction](https://github.com/zeromathai/zeromathai-ai/blob/main/docs/ml-to-dl/07-transformer-architecture-overview.md#section-16)
 
 ---
 
+<a id="section-1"></a>
 ## 1. Why Transformers Replaced Sequential Processing
 
 Before Transformers, **Recurrent Neural Networks (RNNs)** were a standard way to process sequences. An RNN reads one position at a time and carries a hidden state from one step to the next.
@@ -64,6 +65,7 @@ This combination of direct token interaction and parallel computation is the arc
 
 ---
 
+<a id="section-2"></a>
 ## 2. From Sequence-to-Sequence Models to the Transformer
 
 The original Transformer is an **encoder–decoder architecture** designed for sequence-to-sequence tasks.
@@ -126,6 +128,7 @@ This architecture naturally leads to two different forms of attention:
 
 ---
 
+<a id="section-3"></a>
 ## 3. Language Modeling and the Need for Attention
 
 A **language model** estimates which token is likely to come next given the preceding context.
@@ -142,9 +145,11 @@ Generation proceeds autoregressively: after selecting one token, that token beco
 
 Conceptually,
 
-$$
+
+```math
 x^{(t)}=\hat{y}^{(t-1)}
-$$
+```
+
 
 where the previous model output becomes an input at the next generation step.
 
@@ -166,29 +171,37 @@ Earlier encoder–decoder systems could compress the input into a fixed represen
 
 If the encoder produces hidden states $h_1,\ldots,h_T$, the context representation at decoder step $t$ can be written as:
 
-$$
+
+```math
 c^{(t)}=\sum_{i=1}^{T}\alpha_i^{(t)}h_i
-$$
+```
+
 
 where $\alpha_i^{(t)}$ indicates how strongly the decoder attends to encoder position $i$.
 
 For example, if
 
-$$
+
+```math
 h_1=10,\quad h_2=20,\quad h_3=30
-$$
+```
+
 
 and the attention weights are
 
-$$
+
+```math
 [0.6,0.3,0.1],
-$$
+```
+
 
 then
 
-$$
+
+```math
 c=0.6\times10+0.3\times20+0.1\times30=15.
-$$
+```
+
 
 The first encoder position contributes most strongly.
 
@@ -196,6 +209,7 @@ The important conceptual shift is that the context representation is no longer n
 
 ---
 
+<a id="section-4"></a>
 ## 4. Query, Key, and Value
 
 The general attention mechanism can be understood through **Query–Key–Value (QKV)**.
@@ -230,41 +244,52 @@ Weighted combination of Values
 
 If the raw scores are approximately
 
-$$
+
+```math
 [2.0,1.0,0.1],
-$$
+```
+
 
 Softmax produces weights of approximately
 
-$$
+
+```math
 [0.65,0.24,0.11].
-$$
+```
+
 
 If the corresponding scalar values are
 
-$$
+
+```math
 [10,20,30],
-$$
+```
+
 
 the weighted result is
 
-$$
+
+```math
 0.65\times10+0.24\times20+0.11\times30=14.6.
-$$
+```
+
 
 Attention is therefore not an ordinary average. It is a learned, selective combination of information.
 
 ---
 
+<a id="section-5"></a>
 ## 5. Self-Attention as Matrix Computation
 
 In **self-attention**, the queries, keys, and values come from the same input sequence.
 
 Let $X$ denote the matrix of input representations. Learned projection matrices create the three attention representations:
 
-$$
+
+```math
 Q=XW_Q,\quad K=XW_K,\quad V=XW_V.
-$$
+```
+
 
 These projections separate three roles that every token must play:
 
@@ -278,21 +303,27 @@ A model may, for example, project a 512-dimensional representation into a 64-dim
 
 For a single query $q$ and key $k$, similarity is measured by the dot product:
 
-$$
+
+```math
 \text{score}=q\cdot k.
-$$
+```
+
 
 If
 
-$$
+
+```math
 q_1\cdot k_1=112
-$$
+```
+
 
 and
 
-$$
+
+```math
 q_1\cdot k_2=96,
-$$
+```
+
 
 the first key receives the stronger raw match.
 
@@ -304,49 +335,61 @@ As the key dimension increases, dot products can become large. Feeding very larg
 
 Scaled dot-product attention therefore divides the score by the square root of the key dimension:
 
-$$
+
+```math
 \frac{q\cdot k}{\sqrt{d_k}}.
-$$
+```
+
 
 Softmax then converts the scaled scores into normalized attention weights.
 
 For example, scores
 
-$$
+
+```math
 [14,12]
-$$
+```
+
 
 produce approximate weights
 
-$$
+
+```math
 [0.88,0.12].
-$$
+```
+
 
 ### Weighted values
 
 The output for a query is the weighted combination of value vectors:
 
-$$
+
+```math
 z=\sum_i\alpha_i v_i.
-$$
+```
+
 
 If the values are $[10,20]$ and the weights are $[0.88,0.12]$, then
 
-$$
+
+```math
 z=0.88\times10+0.12\times20=11.2.
-$$
+```
+
 
 ### Matrix formulation
 
 All positions are processed together in practical Transformer implementations:
 
-$$
+
+```math
 \text{Attention}(Q,K,V)
 =
 \text{softmax}\left(
 \frac{QK^T}{\sqrt{d_k}}
 \right)V.
-$$
+```
+
 
 This equation captures the core Transformer operation:
 
@@ -359,6 +402,7 @@ The matrix formulation makes parallel processing possible during training and al
 
 ---
 
+<a id="section-6"></a>
 ## 6. Multi-Head Attention and Representation Subspaces
 
 A single attention map provides only one view of token relationships. Language, however, contains many kinds of dependencies: nearby lexical relationships, syntactic relationships, semantic associations, and long-distance references may all matter simultaneously.
@@ -387,11 +431,13 @@ The original Transformer example used eight attention heads, illustrating how th
 
 After computing the heads independently, their outputs are concatenated and projected:
 
-$$
+
+```math
 \text{MultiHead}(Q,K,V)
 =
 \text{Concat}(\text{head}_1,\dots,\text{head}_h)W^O.
-$$
+```
+
 
 If two heads each produce three-dimensional vectors, concatenation produces a six-dimensional representation. The learned output matrix $W^O$ then mixes the information from the heads into the model's required output dimension.
 
@@ -404,6 +450,7 @@ Multi-head attention should therefore be understood not merely as "running atten
 
 ---
 
+<a id="section-7"></a>
 ## 7. Positional Information: Sinusoidal Encoding, APE, RPE, and RoPE
 
 Self-attention compares token representations without inherently knowing their sequence order.
@@ -421,21 +468,25 @@ The tokens are the same, but their order changes the meaning. Transformer repres
 
 The original Transformer used fixed sinusoidal positional signals added to token embeddings:
 
-$$
+
+```math
 PE(pos,2i)
 =
 \sin\left(
 \frac{pos}{10000^{2i/d_{\text{model}}}}
 \right),
-$$
+```
 
-$$
+
+
+```math
 PE(pos,2i+1)
 =
 \cos\left(
 \frac{pos}{10000^{2i/d_{\text{model}}}}
 \right).
-$$
+```
+
 
 Here:
 
@@ -445,19 +496,23 @@ Here:
 
 For $d_{\text{model}}=4$ and $pos=1$:
 
-$$
+
+```math
 PE(1)
 =
 [\sin(1),\cos(1),\sin(0.01),\cos(0.01)]
-$$
+```
+
 
 and approximately
 
-$$
+
+```math
 PE(1)
 \approx
 [0.8415,0.5403,0.0100,0.99995].
-$$
+```
+
 
 Different dimensions use different frequencies, giving each position a structured multi-scale pattern.
 
@@ -469,27 +524,35 @@ As Transformer systems evolved, positional methods increasingly focused on how p
 
 **Absolute Positional Embedding (APE)** associates a representation with each absolute position and combines it with the token representation:
 
-$$
+
+```math
 E=X+P.
-$$
+```
+
 
 If
 
-$$
+
+```math
 X=[0.2,0.5]
-$$
+```
+
 
 and
 
-$$
+
+```math
 P=[0.1,-0.2],
-$$
+```
+
 
 then
 
-$$
+
+```math
 E=[0.2+0.1,0.5+(-0.2)]=[0.3,0.3].
-$$
+```
+
 
 APE is simple and effective for positions covered during training.
 
@@ -501,31 +564,39 @@ Its limitation is long-context extrapolation. If the model must process position
 
 A simplified attention score can be written as:
 
-$$
+
+```math
 A_{ij}
 =
 \frac{Q_iK_j^T+R_{i-j}}{\sqrt{d}},
-$$
+```
+
 
 where $R_{i-j}$ contributes information about the relative displacement between positions $i$ and $j$.
 
 If
 
-$$
+
+```math
 Q_iK_j^T=12,\quad R_{i-j}=4,\quad \sqrt{d}=4,
-$$
+```
+
 
 then
 
-$$
+
+```math
 A_{ij}=\frac{12+4}{4}=4.
-$$
+```
+
 
 Without the positional contribution, the score would be:
 
-$$
+
+```math
 \frac{12}{4}=3.
-$$
+```
+
 
 RPE therefore makes positional relationships explicit inside the attention calculation.
 
@@ -537,28 +608,34 @@ This can be useful for variable-length inputs, but it can increase implementatio
 
 A two-dimensional rotation matrix is:
 
-$$
+
+```math
 R_{\theta}
 =
 \begin{bmatrix}
 \cos\theta & -\sin\theta \\
 \sin\theta & \cos\theta
 \end{bmatrix}.
-$$
+```
+
 
 For example, rotating $[1,0]$ by $90^\circ$ gives:
 
-$$
+
+```math
 [1,0]\rightarrow[0,1].
-$$
+```
+
 
 The important property of RoPE appears when the rotated Query and Key are compared:
 
-$$
+
+```math
 (R_{\theta}^{i}Q)^T(R_{\theta}^{j}K)
 =
 Q^TR_{\theta}^{j-i}K.
-$$
+```
+
 
 Although position-dependent rotations are applied using absolute positions $i$ and $j$, the dot product depends on their relative difference $j-i$.
 
@@ -576,6 +653,7 @@ RoPE has become especially important in modern long-context Transformer designs 
 
 ---
 
+<a id="section-8"></a>
 ## 8. Residual Connections, LayerNorm, and Transformer Blocks
 
 Attention alone does not make a complete Transformer layer.
@@ -598,27 +676,33 @@ The residual connection preserves the input while a sublayer learns a transforma
 
 In the original Post-LN form:
 
-$$
+
+```math
 \text{Output}
 =
 \text{LayerNorm}\left(
 x+\text{Sublayer}(x)
 \right).
-$$
+```
+
 
 The addition is important because the network does not need to reconstruct the entire representation from scratch at every layer. Existing information can propagate through the residual path while each sublayer contributes a learned modification.
 
 For a simplified scalar illustration, if
 
-$$
+
+```math
 x=10
-$$
+```
+
 
 and
 
-$$
+
+```math
 \text{Sublayer}(x)=3,
-$$
+```
+
 
 the residual addition produces $13$ before normalization. In an actual Transformer, normalization operates over the components of the token vector rather than over one scalar value.
 
@@ -644,6 +728,7 @@ This placement matters as networks become deeper. Pre-LN is widely used because 
 
 ---
 
+<a id="section-9"></a>
 ## 9. Transformer Decoder and Autoregressive Generation
 
 The Transformer decoder is responsible for producing output sequences.
@@ -660,12 +745,14 @@ If the decoder is predicting the token at position $t$, it must not read tokens 
 
 For an input-conditioned encoder–decoder model, the output factorization is:
 
-$$
+
+```math
 P(y_1,y_2,\dots,y_T\mid x)
 =
 \prod_{t=1}^{T}
 P(y_t\mid y_1,\dots,y_{t-1},x).
-$$
+```
+
 
 Every output token is therefore predicted from the source input $x$ and previously available output tokens.
 
@@ -716,6 +803,7 @@ This decoder-only organization is central to many modern large language models.
 
 ---
 
+<a id="section-10"></a>
 ## 10. LM Head, Temperature, and Decoding Strategies
 
 The final hidden representation is not yet a vocabulary probability distribution.
@@ -742,38 +830,48 @@ Some Transformer models use **weight tying**, sharing the input embedding matrix
 
 Before sampling, the shape of the probability distribution can be adjusted by dividing the logits by a temperature $\tau$:
 
-$$
+
+```math
 p_i(\tau)
 =
 \frac{\exp(z_i/\tau)}
 {\sum_{j=1}^{n}\exp(z_j/\tau)}.
-$$
+```
+
 
 Lower temperature makes the distribution sharper. Higher temperature makes it flatter.
 
 For logits
 
-$$
+
+```math
 [2,1,0],
-$$
+```
+
 
 at $\tau=1$ the probabilities are approximately:
 
-$$
+
+```math
 [0.67,0.24,0.09].
-$$
+```
+
 
 At $\tau=0.5$:
 
-$$
+
+```math
 [0.87,0.12,0.02].
-$$
+```
+
 
 At $\tau=2$:
 
-$$
+
+```math
 [0.51,0.31,0.19].
-$$
+```
+
 
 Temperature changes the distribution from which decoding operates; it does not itself choose the output token.
 
@@ -783,9 +881,11 @@ Temperature changes the distribution from which decoding operates; it does not i
 
 If the distribution is:
 
-$$
+
+```math
 [0.70,0.20,0.10],
-$$
+```
+
 
 the first token is selected.
 
@@ -799,9 +899,11 @@ With beam size $k$, the decoder repeatedly expands candidates and retains the be
 
 When
 
-$$
+
+```math
 k=1,
-$$
+```
+
 
 beam search reduces to greedy decoding.
 
@@ -828,9 +930,11 @@ With Top-k and $k=3$, the first three candidates are retained.
 
 With Top-p and $p=0.6$, the first two candidates are enough because:
 
-$$
+
+```math
 0.45+0.20=0.65.
-$$
+```
+
 
 The nucleus therefore contains honeycomb and gingerbread.
 
@@ -838,27 +942,34 @@ These strategies illustrate an important distinction: a Transformer computes a d
 
 ---
 
+<a id="section-11"></a>
 ## 11. The Long-Context Attention Bottleneck
 
 Self-attention's greatest strength also creates one of its major scaling problems.
 
 With **Full Attention**, each of $n$ positions may attend to every other position, producing an attention matrix whose size grows quadratically:
 
-$$
+
+```math
 \text{Attention Cost}=O(n^2).
-$$
+```
+
 
 For 1,000 tokens, the number of pairwise attention scores is approximately:
 
-$$
+
+```math
 1000\times1000=1{,}000{,}000.
-$$
+```
+
 
 For 10,000 tokens:
 
-$$
+
+```math
 10000\times10000=100{,}000{,}000.
-$$
+```
+
 
 Increasing sequence length by a factor of ten therefore increases the number of pairwise scores by roughly a factor of one hundred.
 
@@ -868,6 +979,7 @@ Longer context can expose the model to more information, but it also increases a
 
 ---
 
+<a id="section-12"></a>
 ## 12. Local, Sparse, and FlashAttention
 
 Not all efficient-attention methods solve the same problem.
@@ -928,6 +1040,7 @@ Efficient attention is not a single technique. It is the broader goal of preserv
 
 ---
 
+<a id="section-13"></a>
 ## 13. KV Cache and Autoregressive Inference
 
 Training and autoregressive inference have different computational patterns.
@@ -978,6 +1091,7 @@ Reducing that memory requirement leads directly to MQA, GQA, and MLA.
 
 ---
 
+<a id="section-14"></a>
 ## 14. MQA, GQA, and MLA
 
 Standard **Multi-Head Attention (MHA)** gives every head its own Q, K, and V projections. This supports representation diversity but requires separate K/V states for every attention head.
@@ -1057,6 +1171,7 @@ These mechanisms share one objective: reducing the memory cost of autoregressive
 
 ---
 
+<a id="section-15"></a>
 ## 15. Modern Transformer Blocks in LLMs
 
 Modern LLMs still retain the basic Transformer logic:
@@ -1107,6 +1222,7 @@ The modern Transformer is therefore not a fundamentally different neural archite
 
 ---
 
+<a id="section-16"></a>
 ## 16. RMSNorm, SwiGLU, Mixture of Experts, and Multi-Token Prediction
 
 ### RMSNorm
@@ -1115,55 +1231,67 @@ The modern Transformer is therefore not a fundamentally different neural archite
 
 For a hidden vector $\mathbf{h}$,
 
-$$
+
+```math
 \text{RMS}(\mathbf{h})
 =
 \sqrt{
 \frac{1}{n}
 \sum_{i=1}^{n}h_i^2
 }.
-$$
+```
+
 
 The normalized representation is:
 
-$$
+
+```math
 \mathbf{h}_{\text{norm}}
 =
 \frac{\mathbf{h}}
 {\text{RMS}(\mathbf{h})+\epsilon}
 \odot\mathbf{g},
-$$
+```
+
 
 where $\mathbf{g}$ is a learned scaling parameter.
 
 If
 
-$$
+
+```math
 \mathbf{h}=[3,4],
-$$
+```
+
 
 then
 
-$$
+
+```math
 \text{RMS}(\mathbf{h})
 =
 \sqrt{\frac{9+16}{2}}
 =
 \sqrt{12.5}
 \approx3.54.
-$$
+```
+
 
 Ignoring $\epsilon$ and using
 
-$$
+
+```math
 \mathbf{g}=[1,1],
-$$
+```
+
 
 the normalized vector is approximately
 
-$$
+
+```math
 [0.85,1.13].
-$$
+```
+
 
 RMSNorm provides a computationally simpler way to stabilize activation scale and is widely used in large Transformer models.
 
@@ -1173,31 +1301,39 @@ Modern feed-forward blocks frequently use a gated activation such as **SwiGLU**.
 
 A simplified form is:
 
-$$
+
+```math
 \text{SwiGLU}(x)
 =
 (W_1x)\odot\text{Swish}(W_2x).
-$$
+```
+
 
 One pathway produces a value representation while the other acts as a gate.
 
 If
 
-$$
+
+```math
 W_1x=4
-$$
+```
+
 
 and
 
-$$
+
+```math
 \text{Swish}(W_2x)=0.5,
-$$
+```
+
 
 then
 
-$$
+
+```math
 \text{SwiGLU}(x)=4\times0.5=2.
-$$
+```
+
 
 The gating mechanism allows the FFN to modulate which information is emphasized or suppressed.
 
@@ -1209,9 +1345,11 @@ A **router**, or gating network, selects which experts should process each input
 
 For example, suppose the routing probabilities for four experts are:
 
-$$
+
+```math
 [0.45,0.19,0.05,0.31].
-$$
+```
+
 
 With Top-2 routing, experts 1 and 4 are selected.
 
@@ -1233,9 +1371,11 @@ Standard autoregressive language modeling usually trains a position $t$ to predi
 
 **Multi-Token Prediction (MTP)** extends that supervision so that one representation can be trained to predict several future positions, such as:
 
-$$
+
+```math
 t+1,\quad t+2,\quad t+3.
-$$
+```
+
 
 Conceptually:
 
