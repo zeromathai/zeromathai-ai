@@ -12,8 +12,8 @@ A GAN approaches this problem through adversarial learning. Instead of explicitl
 
 ## 📖 Full Article
 
-* English: [https://zeromathai.com/en/gan-en/](https://zeromathai.com/en/gan-en/)
-* Korean: [https://zeromathai.com/gan/](https://zeromathai.com/gan/)
+* English: [https://zeromathai.com/en/generative-model-overview-course-en/](https://zeromathai.com/en/generative-model-overview-course-en/)
+* Korean: [https://zeromathai.com/generative-model-overview-course//](https://zeromathai.com/generative-model-overview-course/)
 
 ---
 
