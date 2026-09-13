@@ -105,7 +105,7 @@ These are the core concept hubs that organize the entire AI field:
 - [CNNs](docs/ml-to-dl/05-convolutional-neural-networks-cnn.md)
 - [RNNs](docs/ml-to-dl/06-recurrent-reural-networks.md)
 - [Transformer — From Self-Attention to Modern LLM Architectures](docs/ml-to-dl/07-transformer-architecture-overview.md)
-- [GAN — Generative Modeling and Adversarial Learning](docs/ml-to-dl/08-generative-model-overview.md)
+- [Generative Modeling](docs/ml-to-dl/08-generative-model-overview.md)
 - VAE (Coming Soon)
 - Diffusion Models (Coming Soon)
 
