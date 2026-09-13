@@ -1,4 +1,4 @@
-# 8. GAN
+# 8. Generative Modeling 
 
 ## 📌 Lecture Overview
 
